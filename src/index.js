@@ -9,6 +9,10 @@ class SyncStorage {
   data: Map<*, *> = new Map();
   loading: boolean = true;
 
+  constructor(): void {
+    this.init();
+  }
+
   init(): Promise<Array<*>> {
     return AsyncStorage.getAllKeys().then((keys: Array<KeyType>) =>
       AsyncStorage.multiGet(keys).then((data: Array<Array<KeyType>>): Array<*> => {
